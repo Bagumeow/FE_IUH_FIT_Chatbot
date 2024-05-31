@@ -6,7 +6,7 @@
 - Clone this project
 - Run `npm install`
 - Run `npm start`
-- Open browser and go to `localhost:8080`
+- Open browser and go to `localhost:7000`
 ## 3. Features
 -  Register, login, logout
 -  Chat with bot
