@@ -31,8 +31,8 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
 
   <!-- =======================================================
@@ -125,34 +125,17 @@
         <button type="button" class="btn btn-info btn-new-sesison">Cuộc trò chuyện mới!</button>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="index.html">
+        <button type="button" class="nav-link  btn-history-chat">
           <i class=" ri-alarm-line"></i>
           <span>Lịch sử trò chuyện</span>
-        </a>
+        </button>
+
       </li>
 
       <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
-        <li>
-          <a href="components-alerts.html">
-            <i class="bi bi-circle"></i><span>Trò chuyện 1</span>
-          </a>
-        </li>
-        <li>
-          <a href="components-accordion.html" class="active">
-            <i class="bi bi-circle"></i><span>Trò chuyện 2</span>
-          </a>
-        </li>
-        <li>
-          <a href="components-badges.html">
-            <i class="bi bi-circle"></i><span>Trò chuyện 3</span>
-          </a>
-        </li>
-        <li>
-          <a href="components-breadcrumbs.html">
-            <i class="bi bi-circle"></i><span>Trò chuyện 4</span>
-          </a>
-        </li>
+            <!-- History plot in here -->
       </ul>
+    </ul><!-- End Sidebar Nav-->
 
 
   </aside><!-- End Sidebar-->
@@ -215,6 +198,8 @@
   <script src="js/chat/change_bot.js"></script>
   <script src="js/chat/chat_gemini.js"></script>
   <script src="js/chat/new_sesion.js"></script>
+  <script src="js/chat/history_gemini.js "></script>
+
   <!-- Vendor JS Files -->
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

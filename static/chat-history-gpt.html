@@ -125,7 +125,7 @@
         <button type="button" class="btn btn-info btn-new-sesison">Cuộc trò chuyện mới!</button>
       </li>
       <li class="nav-item">
-        <button type="button" class="nav-link  btn-history-chat">
+        <button type="button" class="nav-link">
           <i class=" ri-alarm-line"></i>
           <span>Lịch sử trò chuyện</span>
         </button>
@@ -133,7 +133,7 @@
       </li>
 
       <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
-            <!-- History plot in here -->
+        <!-- History plot in here -->
       </ul>
     </ul><!-- End Sidebar Nav-->
 
@@ -164,13 +164,6 @@
           </div>
           <div class="chat-history" id="chat-history">
           </div>
-          <div class="text" id="input-text" style="position: relative;">
-            <input type="text" id="user-message" class="form-control" style="padding-right: 50px;"
-              placeholder="Nhập câu hỏi của bạn ở đây">
-            <button type="button" class="btn btn-primary"
-              style="position: absolute; top: 50%; right: 10px; width: 60px; height: 30px; transform: translateY(-50%);"
-              onclick="sendMessage()">Gửi</button>
-          </div>
         </div>
       </div>
     </div>
@@ -193,6 +186,57 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
   <!-- custom js -->
+  <script>
+    function scrollToBottom() {
+      var chatHistory = document.getElementById("chat-history");
+      chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
+    $(document).ready(function () {
+      $(document).on('click', '.btn-history-chat', function () {
+        $('.btn-history-chat i').removeClass('bi-circle-fill').addClass('bi-circle');
+        $(this).find('i').removeClass('bi-circle').addClass('bi-circle-fill');
+        var session_id = $(this).text();
+        history_chat = localStorage.getItem("history_gpt");
+        history_chat = JSON.parse(history_chat);
+        history_chat_session = history_chat[session_id];
+
+        var chatHistory = document.getElementById("chat-history");
+        // Clear the chat history
+        chatHistory.innerHTML = '';
+
+        for (var key in history_chat_session) {
+          var message = history_chat_session[key];
+          var messageDiv = document.createElement("div");
+          var cardBody = document.createElement("div");
+          var image = document.createElement("img");
+
+          if (parseInt(key) % 2 === 0) {
+            // User message
+            content_message = message['human']
+            messageDiv.className = "card user-message";
+            image.src = "./assets/img/avatar-ds.jpg";
+            image.alt = "User";
+            image.className = "user-image";
+          } else {
+            // Bot message
+            content_message = message['ai']
+            messageDiv.className = "card bot-message";
+            image.src = "https://th.bing.com/th/id/R.dec45b829bcadab7124de8e1a5df2263?rik=eoFrojBvo%2f3heg&pid=ImgRaw&r=0";
+            image.alt = "Bot";
+            image.className = "bot-image";
+          }
+
+          image.textContent = image.alt;
+          messageDiv.appendChild(image);
+          cardBody.className = "card-body";
+          cardBody.textContent = content_message;
+          messageDiv.appendChild(cardBody);
+          chatHistory.appendChild(messageDiv);
+        }
+        scrollToBottom();
+      });
+    });
+  </script>
   <script src="js/user/logout.js"></script>
   <script src="js/chat/change_bot.js"></script>
   <script src="js/chat/chat_gpt.js"></script>
